@@ -15,9 +15,9 @@ cocos2d::Scene* ActionsScene::createScene()
     return scene;
 }
 
-bool ActionsScene::initWithColor()
+bool ActionsScene::init()
 {
-    if (!LayerColor::init())
+    if (!LayerColor::initWithColor(cocos2d::Color4B::BLACK))
     {
         return false;
     }
@@ -31,8 +31,8 @@ bool ActionsScene::initWithColor()
         // This is where our different actions are going to be implemented
         
         //Moves sprite to bottom left corner(0, 0).
-        //auto action = cocos2d::MoveTo::create(2, cocos2d::Vec2(0, 0));
-        //sprite->runAction(action);
+        auto action = cocos2d::MoveTo::create(2, cocos2d::Vec2(0, 0));
+//        sprite->runAction(action);
         
         //Increases image, makes it more red, and fades it.
         cocos2d::Vector<cocos2d::FiniteTimeAction*> actions;
@@ -51,6 +51,8 @@ bool ActionsScene::initWithColor()
         
         //Instant Actions:
         cocos2d::Vector<cocos2d::FiniteTimeAction*> actions2;
+        
+        // Turns background red on KEY PRESS, not mouse click.
         actions2.pushBack(cocos2d::CallFunc::create([=]()->void {
             this->setColor(cocos2d::Color3B::RED);
         }));

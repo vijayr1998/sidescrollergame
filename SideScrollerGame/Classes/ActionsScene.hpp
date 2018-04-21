@@ -16,7 +16,7 @@ class ActionsScene : public cocos2d::LayerColor
 {
 public:
     static cocos2d::Scene* createScene();
-    virtual bool initWithColor();
+    virtual bool init();
     CREATE_FUNC(ActionsScene);
     
     //void update(float) override;

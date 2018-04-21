@@ -189,6 +189,7 @@
 		B1C7E905208AD0F80026A363 /* ActionsScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ActionsScene.hpp; sourceTree = "<group>"; };
 		B1C7E908208AD1B50026A363 /* sister.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sister.png; sourceTree = "<group>"; };
 		B1C7E90B208AD1B90026A363 /* luigi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = luigi.png; sourceTree = "<group>"; };
+		B1C7E90E208B13D70026A363 /* DEVELOPMENT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DEVELOPMENT.md; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -281,6 +282,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				B1C7E90E208B13D70026A363 /* DEVELOPMENT.md */,
 				46880B8319C43A87006E1F66 /* Classes */,
 				46880B7519C43A67006E1F66 /* Resources */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
