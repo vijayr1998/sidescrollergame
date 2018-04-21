@@ -5,6 +5,7 @@
 #include "MouseScene.hpp"
 #include "KeyboardScene.hpp"
 #include "ActionsScene.hpp"
+#include "ActionManagerScene.hpp"
 
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
@@ -121,7 +122,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //auto scene = KeyboardScene::createScene();
     
     //Using actions to update, pause, etc.
-    auto scene = ActionsScene::createScene();
+    //auto scene = ActionsScene::createScene();
+    
+    //Using ActionManager to control actions:
+    auto scene = ActionManagerScene::createScene();
     
     // run
     director->runWithScene(scene);

@@ -75,6 +75,8 @@
 		B1C7E90A208AD1B50026A363 /* sister.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C7E908208AD1B50026A363 /* sister.png */; };
 		B1C7E90C208AD1BA0026A363 /* luigi.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C7E90B208AD1B90026A363 /* luigi.png */; };
 		B1C7E90D208AD1BA0026A363 /* luigi.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C7E90B208AD1B90026A363 /* luigi.png */; };
+		B1C7E911208B19670026A363 /* ActionManagerScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1C7E90F208B19670026A363 /* ActionManagerScene.cpp */; };
+		B1C7E912208B19670026A363 /* ActionManagerScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1C7E90F208B19670026A363 /* ActionManagerScene.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -190,6 +192,8 @@
 		B1C7E908208AD1B50026A363 /* sister.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sister.png; sourceTree = "<group>"; };
 		B1C7E90B208AD1B90026A363 /* luigi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = luigi.png; sourceTree = "<group>"; };
 		B1C7E90E208B13D70026A363 /* DEVELOPMENT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DEVELOPMENT.md; sourceTree = "<group>"; };
+		B1C7E90F208B19670026A363 /* ActionManagerScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ActionManagerScene.cpp; sourceTree = "<group>"; };
+		B1C7E910208B19670026A363 /* ActionManagerScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ActionManagerScene.hpp; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -353,6 +357,8 @@
 				B1C7E901208AD0EA0026A363 /* KeyboardScene.hpp */,
 				B1C7E904208AD0F80026A363 /* ActionsScene.cpp */,
 				B1C7E905208AD0F80026A363 /* ActionsScene.hpp */,
+				B1C7E90F208B19670026A363 /* ActionManagerScene.cpp */,
+				B1C7E910208B19670026A363 /* ActionManagerScene.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -563,6 +569,7 @@
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				B1C7E911208B19670026A363 /* ActionManagerScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				B1C7E8FE208AD0DC0026A363 /* MouseScene.cpp in Sources */,
 				B1C7E902208AD0EA0026A363 /* KeyboardScene.cpp in Sources */,
@@ -581,6 +588,7 @@
 				B1C7E8F4208AD0C20026A363 /* GraphicsScene.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				B1C7E8FF208AD0DC0026A363 /* MouseScene.cpp in Sources */,
+				B1C7E912208B19670026A363 /* ActionManagerScene.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

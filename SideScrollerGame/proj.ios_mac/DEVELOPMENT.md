@@ -16,3 +16,8 @@
 4. I have to decide how to implement my player character, and whether I can have different sprites for jump, crouch, and lateral movement. 
 
 
+## Update 4/21: I understand how different levels work. 
+
+### http://www.cocos2d-x.org/docs/cocos2d-x/en/basic_concepts/scene.html
+
+### Reasonably confident I can implement all the features I want.  What I need to do is clean up all the example code I've been working with and start writing my own. I will have to create a new branch for the actual development of the game and go from there. 
