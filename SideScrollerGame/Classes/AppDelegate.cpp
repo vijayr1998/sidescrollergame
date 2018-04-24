@@ -6,6 +6,7 @@
 #include "KeyboardScene.hpp"
 #include "ActionsScene.hpp"
 #include "ActionManagerScene.hpp"
+#include "MyFirstScene.hpp"
 
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
@@ -27,10 +28,16 @@ USING_NS_CC;
 //Previous default window size
 //static cocos2d::Size designResolutionSize = cocos2d::Size(480, 320);
 
-//My new window size at 1080p
+/**
+ * Default window size is too small for any reasonbly sized sprite.
+ * 1080p offers enough real estate for me to work with.
+ * However, I may change the aspect ratio to something less widescreen to make levels less long.
+ * Changed to 2048x1536 as per https://www.codeandweb.com/blog/2015/12/15/animations-and-spritesheets-in-cocos2d-x
+ * This is for simplicity using spritesheets
+ */
+//static cocos2d::Size designResolutionSize = cocos2d::Size(2048, 1536);
 static cocos2d::Size designResolutionSize = cocos2d::Size(1920, 1080);
-
-static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
+static cocos2d::Size smallResolutionSize = cocos2d::Size(512, 384);
 static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
 static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
 
@@ -107,28 +114,32 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
     
     // Displays the opening screen.
-    //auto scene = HelloWorld::createScene();
+    auto scene = HelloWorld::createScene();
     
     // Displays an image.
-    //auto scene = GraphicsScene::createScene();
+    auto scene2 = GraphicsScene::createScene();
     
     // Gives info on where I clicked
-    //auto scene = TouchScene::createScene();
+    auto scene3 = TouchScene::createScene();
     
     // A mouse Listener
-    //auto scene = MouseScene::createScene();
+    auto scene4 = MouseScene::createScene();
     
     //A keyboard listener
-    //auto scene = KeyboardScene::createScene();
+    auto scene5 = KeyboardScene::createScene();
     
     //Using actions to update, pause, etc.
-    //auto scene = ActionsScene::createScene();
+    auto scene6 = ActionsScene::createScene();
     
     //Using ActionManager to control actions:
-    auto scene = ActionManagerScene::createScene();
+    auto scene7 = ActionManagerScene::createScene();
+    
+    //My First Menu
+    auto scene8 = MyFirstScene::createScene();
     
     // run
-    director->runWithScene(scene);
+    director->runWithScene(scene8);
+    //director->runWithScene(scene2);
     
     return true;
 }

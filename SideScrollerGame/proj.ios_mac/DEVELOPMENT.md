@@ -21,3 +21,5 @@
 ### http://www.cocos2d-x.org/docs/cocos2d-x/en/basic_concepts/scene.html
 
 ### Reasonably confident I can implement all the features I want.  What I need to do is clean up all the example code I've been working with and start writing my own. I will have to create a new branch for the actual development of the game and go from there. 
+
+

@@ -126,6 +126,6 @@ void KeyboardScene::update(float delta) {
     else
         label->setString("Press the CTRL Key");
 }
-// Because cocos2d-x requres createScene to be static, we need to make other non-pointer members static
+// Because cocos2d-x requires createScene to be static, I need to make other non-pointer members static
 std::map<cocos2d::EventKeyboard::KeyCode,
 std::chrono::high_resolution_clock::time_point> KeyboardScene::keys;

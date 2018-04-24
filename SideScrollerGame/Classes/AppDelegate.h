@@ -34,6 +34,12 @@ public:
     @param  the pointer of the application
     */
     virtual void applicationWillEnterForeground();
+    
+//private:
+//    void initOpenGL();
+//    void initMultiResolution();
+//    void initDirector();
+//    void createAndRunScene();
 };
 
 #endif // _APP_DELEGATE_H_
