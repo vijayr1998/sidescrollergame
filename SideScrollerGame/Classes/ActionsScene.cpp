@@ -34,11 +34,10 @@ bool ActionsScene::init()
         auto action = cocos2d::MoveTo::create(2, cocos2d::Vec2(0, 0));
 //        sprite->runAction(action);
         
-        //Increases image, makes it more red, and fades it.
         cocos2d::Vector<cocos2d::FiniteTimeAction*> actions;
-        actions.pushBack(cocos2d::ScaleBy::create(4, 1.5));
-        actions.pushBack(cocos2d::TintTo::create(4, 255, 0, 0));
-        actions.pushBack(cocos2d::FadeTo::create(4, 30));
+        actions.pushBack(cocos2d::ScaleBy::create(4, 1.5)); //Enlarges image
+        actions.pushBack(cocos2d::TintTo::create(4, 255, 0, 0)); //Makes image red
+        actions.pushBack(cocos2d::FadeTo::create(4, 30)); //Fades image
         auto parallel = cocos2d::Spawn::create(actions);
         //sprite ->runAction(parallel);
         

@@ -6,7 +6,7 @@
 #include "KeyboardScene.hpp"
 #include "ActionsScene.hpp"
 #include "ActionManagerScene.hpp"
-#include "MyFirstScene.hpp"
+#include "OpeningScene.hpp"
 
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
@@ -36,7 +36,7 @@ USING_NS_CC;
  * This is for simplicity using spritesheets
  */
 //static cocos2d::Size designResolutionSize = cocos2d::Size(2048, 1536);
-static cocos2d::Size designResolutionSize = cocos2d::Size(1920, 1080);
+static cocos2d::Size designResolutionSize = cocos2d::Size(1680, 1030);
 static cocos2d::Size smallResolutionSize = cocos2d::Size(512, 384);
 static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
 static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
@@ -135,7 +135,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto scene7 = ActionManagerScene::createScene();
     
     //My First Menu
-    auto scene8 = MyFirstScene::createScene();
+    auto scene8 = OpeningScene::createScene();
     
     // run
     director->runWithScene(scene8);

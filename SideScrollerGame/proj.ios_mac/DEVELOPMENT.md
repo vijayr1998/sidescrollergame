@@ -22,4 +22,14 @@
 
 ### Reasonably confident I can implement all the features I want.  What I need to do is clean up all the example code I've been working with and start writing my own. I will have to create a new branch for the actual development of the game and go from there. 
 
+## Update 4/24:
 
+### Finished opening scene
+
+1. Created two sprites that should jump together when enter is pressed.
+2. Created a Name Label and text that prompts the user to press ENTER to continue.
+3. Fixed an issue where only one of the sprites would jump.
+4. Fixed the issue of the background image not filling the entire screen by intializing the image later instead of in the constructor. 
+5. Upgraded the sprites to be drawn with many polygons to decrease load. 
+
+### Next step is the menu scene, after I learn how to transition between scenes.
