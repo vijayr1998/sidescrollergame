@@ -6,6 +6,7 @@
 //
 
 #include "OpeningScene.hpp"
+#include "MenuScene.hpp"
 
 USING_NS_CC;
 
@@ -93,9 +94,9 @@ bool OpeningScene::init()
         
         if (code == cocos2d::EventKeyboard::KeyCode::KEY_ESCAPE) {
             exit(0); // Terminates the running of the program.
-        } else if (code == cocos2d::EventKeyboard::KeyCode::KEY_ENTER) {
+        } else if (code == cocos2d::EventKeyboard::KeyCode::KEY_SPACE) {
         
-            auto name = Label::createWithTTF("Click Anywhere to START", "fonts/Optima.ttc", 24);
+            auto name = Label::createWithTTF("Press ENTER to start", "fonts/Optima.ttc", 24);
             auto fadeIn = cocos2d::FadeTo::create(3, 255);
             name->setOpacity(0);
             name->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + 2 * visibleSize.height/5 - name->getContentSize().height));
@@ -110,9 +111,14 @@ bool OpeningScene::init()
             actions.pushBack(bounceAction1);
             actions.pushBack(bounceAction2);
             auto bounce1 = cocos2d::Sequence::create(actions);
-            sprite1->runAction(bounce1);
-            //auto repeat = cocos2d::RepeatForever::create(bounce);
-            sprite2->runAction(bounce1->clone()); //Actions have internal states from acting on other nodes. Clone creates a fresh Action
+            auto repeat = cocos2d::RepeatForever::create(bounce1);
+            sprite1->runAction(repeat);
+            sprite2->runAction(repeat->clone()); //Actions have internal states from acting on other nodes. Clone creates a fresh Action
+        }
+        
+        // Kills current scene and goes to menu screen
+        if (code == cocos2d::EventKeyboard::KeyCode::KEY_ENTER) {
+            Director::getInstance()->replaceScene(MenuScene::createScene());
         }
     };
     

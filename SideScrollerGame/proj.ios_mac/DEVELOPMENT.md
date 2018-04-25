@@ -33,3 +33,19 @@
 5. Upgraded the sprites to be drawn with many polygons to decrease load. 
 
 ### Next step is the menu scene, after I learn how to transition between scenes.
+
+### Menu Scene Progress:
+
+1. Had to call files MenuScene, "menu" was throwing ambiguous reference errror. 
+2. Considering merging menu code into OpeningScene, no need for separate scene.
+
+## Update 4/25:
+
+1. Have to figure out how to transition screens. 
+2. Have to figure out how to use new code, not deprecated code. 
+3. Wrote code to transition from opening screen to menu screen.
+
+### Menu Screen Progress:
+
+1. Wrote and tested a quit button for my menu. Unfortunately, it is by using deprecated code.
+2. Wrote "Start Game" and "Settings".

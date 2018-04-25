@@ -71,6 +71,8 @@
 		B1673898209019B800A5FCA4 /* stars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1673895209019B800A5FCA4 /* stars.jpg */; };
 		B167389A20901B4700A5FCA4 /* stars2.png in Resources */ = {isa = PBXBuildFile; fileRef = B167389920901B4700A5FCA4 /* stars2.png */; };
 		B167389B20901B4700A5FCA4 /* stars2.png in Resources */ = {isa = PBXBuildFile; fileRef = B167389920901B4700A5FCA4 /* stars2.png */; };
+		B167389E2090223C00A5FCA4 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B167389C2090223C00A5FCA4 /* MenuScene.cpp */; };
+		B167389F2090223C00A5FCA4 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B167389C2090223C00A5FCA4 /* MenuScene.cpp */; };
 		B1C7E8F3208AD0C20026A363 /* GraphicsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1C7E8F1208AD0C20026A363 /* GraphicsScene.cpp */; };
 		B1C7E8F4208AD0C20026A363 /* GraphicsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1C7E8F1208AD0C20026A363 /* GraphicsScene.cpp */; };
 		B1C7E8FA208AD0D20026A363 /* TouchScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1C7E8F8208AD0D20026A363 /* TouchScene.cpp */; };
@@ -195,6 +197,8 @@
 		B110C821208D9D4400993379 /* sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite.png; sourceTree = "<group>"; };
 		B1673895209019B800A5FCA4 /* stars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stars.jpg; sourceTree = "<group>"; };
 		B167389920901B4700A5FCA4 /* stars2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars2.png; sourceTree = "<group>"; };
+		B167389C2090223C00A5FCA4 /* MenuScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
+		B167389D2090223C00A5FCA4 /* MenuScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MenuScene.hpp; sourceTree = "<group>"; };
 		B1C7E8F1208AD0C20026A363 /* GraphicsScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsScene.cpp; sourceTree = "<group>"; };
 		B1C7E8F2208AD0C20026A363 /* GraphicsScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GraphicsScene.hpp; sourceTree = "<group>"; };
 		B1C7E8F8208AD0D20026A363 /* TouchScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TouchScene.cpp; sourceTree = "<group>"; };
@@ -381,6 +385,8 @@
 				B1C7E910208B19670026A363 /* ActionManagerScene.hpp */,
 				B110C819208D96CC00993379 /* OpeningScene.cpp */,
 				B110C81A208D96CC00993379 /* OpeningScene.hpp */,
+				B167389C2090223C00A5FCA4 /* MenuScene.cpp */,
+				B167389D2090223C00A5FCA4 /* MenuScene.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -594,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1C7E906208AD0F80026A363 /* ActionsScene.cpp in Sources */,
+				B167389E2090223C00A5FCA4 /* MenuScene.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				B1C7E8FA208AD0D20026A363 /* TouchScene.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
@@ -617,6 +624,7 @@
 				B1C7E903208AD0EA0026A363 /* KeyboardScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				B1C7E8FB208AD0D20026A363 /* TouchScene.cpp in Sources */,
+				B167389F2090223C00A5FCA4 /* MenuScene.cpp in Sources */,
 				B1C7E8F4208AD0C20026A363 /* GraphicsScene.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				B1C7E8FF208AD0DC0026A363 /* MouseScene.cpp in Sources */,

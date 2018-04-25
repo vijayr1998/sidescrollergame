@@ -7,6 +7,7 @@
 #include "ActionsScene.hpp"
 #include "ActionManagerScene.hpp"
 #include "OpeningScene.hpp"
+#include "MenuScene.hpp"
 
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
@@ -113,33 +114,38 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     // create a scene. it's an autorelease object
     
-    // Displays the opening screen.
+    /**
+    Displays the opening screen.
     auto scene = HelloWorld::createScene();
     
-    // Displays an image.
+    Displays an image.
     auto scene2 = GraphicsScene::createScene();
     
-    // Gives info on where I clicked
+    Gives info on where I clicked
     auto scene3 = TouchScene::createScene();
     
-    // A mouse Listener
+    A mouse Listener
     auto scene4 = MouseScene::createScene();
     
-    //A keyboard listener
+    A keyboard listener
     auto scene5 = KeyboardScene::createScene();
     
-    //Using actions to update, pause, etc.
+    Using actions to update, pause, etc.
     auto scene6 = ActionsScene::createScene();
     
-    //Using ActionManager to control actions:
+    Using ActionManager to control actions:
     auto scene7 = ActionManagerScene::createScene();
+    */
     
-    //My First Menu
-    auto scene8 = OpeningScene::createScene();
+    //Starts game
+    auto beginGame = OpeningScene::createScene();
+    
+    auto menuScreen = MenuScene::createScene();
+    
     
     // run
-    director->runWithScene(scene8);
-    //director->runWithScene(scene2);
+    director->runWithScene(beginGame);
+    //director->runWithScene(menuScreen);
     
     return true;
 }
