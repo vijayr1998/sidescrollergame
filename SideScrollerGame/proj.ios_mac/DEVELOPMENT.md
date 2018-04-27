@@ -44,8 +44,19 @@
 1. Have to figure out how to transition screens. 
 2. Have to figure out how to use new code, not deprecated code. 
 3. Wrote code to transition from opening screen to menu screen.
+4. Did code cleanup. 
 
 ### Menu Screen Progress:
 
 1. Wrote and tested a quit button for my menu. Unfortunately, it is by using deprecated code.
 2. Wrote "Start Game" and "Settings".
+3. Tried writing a new class in MenuScene.cpp for the About Me Page, but it isn't working. I will probably have to create new files for that. :(
+
+### To-do: 
+
+1. Figure out how I will write levels!
+
+## Update 4/26: 
+
+1.  Started working on actual levels for the game. 
+2. Going to learn how to use sprite sheets so I can efficiently create the levels and player character. 

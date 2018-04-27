@@ -1,11 +1,4 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
-#include "GraphicsScene.hpp"
-#include "TouchScene.hpp"
-#include "MouseScene.hpp"
-#include "KeyboardScene.hpp"
-#include "ActionsScene.hpp"
-#include "ActionManagerScene.hpp"
 #include "OpeningScene.hpp"
 #include "MenuScene.hpp"
 
@@ -117,35 +110,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     /**
     Displays the opening screen.
     auto scene = HelloWorld::createScene();
-    
-    Displays an image.
-    auto scene2 = GraphicsScene::createScene();
-    
-    Gives info on where I clicked
-    auto scene3 = TouchScene::createScene();
-    
-    A mouse Listener
-    auto scene4 = MouseScene::createScene();
-    
-    A keyboard listener
-    auto scene5 = KeyboardScene::createScene();
-    
-    Using actions to update, pause, etc.
-    auto scene6 = ActionsScene::createScene();
-    
-    Using ActionManager to control actions:
-    auto scene7 = ActionManagerScene::createScene();
     */
     
     //Starts game
     auto beginGame = OpeningScene::createScene();
     
-    auto menuScreen = MenuScene::createScene();
-    
-    
     // run
     director->runWithScene(beginGame);
-    //director->runWithScene(menuScreen);
     
     return true;
 }

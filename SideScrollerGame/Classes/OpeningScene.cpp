@@ -20,8 +20,7 @@ cocos2d::Scene* OpeningScene::createScene()
 
 bool OpeningScene::init()
 {
-    if (!Layer::init())
-    {
+    if (!Layer::init()) {
         return false;
     }
     
@@ -29,15 +28,6 @@ bool OpeningScene::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    //Sets background image
-    
-    
-    
-    
-    
-    
-    
-    
     // Creates Title
     auto label = Label::createWithTTF("Vijay's Game", "fonts/Avenir Next Condensed.ttc", 72);
     label->setOpacity(0);
@@ -45,18 +35,11 @@ bool OpeningScene::init()
         return false;
     } else {
         auto fadeIn = cocos2d::FadeTo::create(2, 255);
-        
         label->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + 2 * visibleSize.height/3 - label->getContentSize().height));
         label->enableGlow(cocos2d::Color4B::YELLOW);
         this->addChild(label, 1);
         label->runAction(fadeIn);
     }
-    
-    /**
-     * Places two characters
-     */
-//    auto sprite1 = Sprite::create("sister.png");
-//    auto sprite2 = Sprite::create("Oshawott.png");
     
     /**
     * Using generatePolygon draws the sprites using triangles instead of rectangles.
@@ -78,31 +61,33 @@ bool OpeningScene::init()
     }
     
     auto background = Sprite::create();
-    //background->setPosition(visibleSize.width, visibleSize.height);
-    //background->setScale(visibleSize.width / background->getContentSize().width, visibleSize.height / background->getContentSize().height);
     background->setAnchorPoint(cocos2d::Vec2(0,0));
     background->initWithFile("stars2.png");
     background->setPosition(visibleSize.width/2, visibleSize.height/2);
     float scale = MIN(visibleSize.width / background->getContentSize().width, visibleSize.height / background->getContentSize().height);
     background->setScale(scale);
+    
     this->addChild(background, 0);
     this->addChild(sprite1, 1);
     this->addChild(sprite2, 1);
     
     auto listener = cocos2d::EventListenerKeyboard::create();
+    
+    auto name = Label::createWithTTF("Press ENTER to start", "fonts/Optima.ttc", 24);
+    auto fadeIn = cocos2d::FadeTo::create(3, 255);
+    name->setOpacity(0);
+    name->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + 2 * visibleSize.height/5 - name->getContentSize().height));
+    name->enableGlow(cocos2d::Color4B::YELLOW);
+    this->addChild(name, 0);
+    name->runAction(fadeIn);
+    
     listener->onKeyPressed = [=](cocos2d::EventKeyboard::KeyCode code, cocos2d::Event * event)->void {
         
         if (code == cocos2d::EventKeyboard::KeyCode::KEY_ESCAPE) {
             exit(0); // Terminates the running of the program.
         } else if (code == cocos2d::EventKeyboard::KeyCode::KEY_SPACE) {
         
-            auto name = Label::createWithTTF("Press ENTER to start", "fonts/Optima.ttc", 24);
-            auto fadeIn = cocos2d::FadeTo::create(3, 255);
-            name->setOpacity(0);
-            name->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + 2 * visibleSize.height/5 - name->getContentSize().height));
-            name->enableGlow(cocos2d::Color4B::YELLOW);
-            this->addChild(name, 0);
-            name->runAction(fadeIn);
+            
             
             auto bounceAction1 = cocos2d::MoveBy::create(0.5, cocos2d::Vec2(0, 100));
             auto bounceAction2 = cocos2d::MoveBy::create(0.5, cocos2d::Vec2(0, -100));
@@ -118,7 +103,8 @@ bool OpeningScene::init()
         
         // Kills current scene and goes to menu screen
         if (code == cocos2d::EventKeyboard::KeyCode::KEY_ENTER) {
-            Director::getInstance()->replaceScene(MenuScene::createScene());
+            
+            Director::getInstance()->replaceScene(TransitionFade::create(0.5, MenuScene::createScene(), Color3B(0, 0, 0)));
         }
     };
     

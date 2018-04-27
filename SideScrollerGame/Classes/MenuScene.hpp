@@ -1,5 +1,5 @@
 //
-//  Menu.hpp
+//  MenuScene.hpp
 //  SideScrollerGame
 //
 //  Created by Vijay Raveendran on 4/24/18.
@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
+
 class MenuScene : public cocos2d::Layer {
     
 public:
@@ -18,13 +19,13 @@ public:
     static cocos2d::Scene* createScene();
     virtual bool init() override;
     CREATE_FUNC(MenuScene);
-    void buttonOneCallback(Ref* sender);
-    void onMenuCloseCallback(Ref* sender);
-    void onQuit(cocos2d::CCObject* pSender);
+    void onQuit(Ref* pSender);
+    void onStart(Ref* pSender);
+    void onAbout(Ref* pSender);
+    
 private:
-    cocos2d::Sprite* sprite,*sprite2;
     cocos2d::Label* label;
-    bool spritePaused = false;
-    cocos2d::Vector<Node*> pausedNodes;
 };
+
+
 #endif /* MenuScene_hpp */
