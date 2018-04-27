@@ -58,5 +58,11 @@
 
 ## Update 4/26: 
 
+### Level 1 Progress: 
+
 1.  Started working on actual levels for the game. 
 2. Going to learn how to use sprite sheets so I can efficiently create the levels and player character. 
+3. Created a sprite sheet for batch drawing sprites using TexturePacker.
+4. Got files from: http://kenney.nl/assets/platformer-art-deluxe and https://raventale.itch.io/nature-tile-set
+4. Running into problems creating the animation because I don't know how to call each file for walking. 
+5. Properly created animation and found batch file. 
