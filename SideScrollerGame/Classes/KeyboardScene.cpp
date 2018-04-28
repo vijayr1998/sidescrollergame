@@ -96,7 +96,7 @@ bool KeyboardScene::init()
 
 bool KeyboardScene::isKeyPressed(EventKeyboard::KeyCode code) {
     // Check if the key is currently pressed by seeing it it's in the std::map keys
-    // In retrospect, keys is a terrible name for a key/value paried datatype isnt it?
+    // In retrospect, keys is a terrible name for a key/value paired datatype isnt it?
     if(keys.find(code) != keys.end())
         return true;
     return false;

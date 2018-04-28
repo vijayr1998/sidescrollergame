@@ -64,5 +64,15 @@
 2. Going to learn how to use sprite sheets so I can efficiently create the levels and player character. 
 3. Created a sprite sheet for batch drawing sprites using TexturePacker.
 4. Got files from: http://kenney.nl/assets/platformer-art-deluxe and https://raventale.itch.io/nature-tile-set
-4. Running into problems creating the animation because I don't know how to call each file for walking. 
-5. Properly created animation and found batch file. 
+5. Running into problems creating the animation because I don't know how to call each file for walking. 
+6. Properly created animation and found batch file. 
+7. Created the movement. Have to figure out to make movement on key holds, not just indivdual presses. 
+
+## Update 4/27:
+
+### Level 1 Progress:
+
+1.  Trying to adapt KeyboardScene code to Level 1-1.
+2. Trying to fix direction sprite faces when going left or right. 
+3. Have to start loading in floors and platforms. 
+4. The tilemap loader is not finding the tilemap I created. 

@@ -28,22 +28,29 @@ bool Level_1_1::init()
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("res/HDR/:sprites.plist");
     
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    Vec2 visibleSize = Director::getInstance()->getVisibleSize();
+    auto visibleSize = Director::getInstance()->getVisibleSize();
     
     // background
     // Will decide to use background if need be.
 //    auto background = Sprite::createWithSpriteFrameName("background.png");
 //    background->setPosition(origin.x + visibleSize.x / 2,origin.y + visibleSize.y/2);
 //    this->addChild(background);
+    // background:
+    auto background = TMXTiledMap::create("Users/Vijay/finalproject-vijayr1998/SideScrollerGame/Resources/res/game_map.tmx");
+    //background->setPosition(visibleSize.width/2, visibleSize.height/2);
+    addChild(background, 0); // with a tag of '99'
     
     auto frames = getAnimation("adventurer_walk%01d.png", 2);
     auto sprite = Sprite::createWithSpriteFrame(frames.front());
-    auto animation = Animation::createWithSpriteFrames(frames, 1.0f/8);
+    //auto animation = Animation::createWithSpriteFrames(frames, 1.0f/2);
     //sprite->runAction(RepeatForever::create(Animate::create(animation)));
     this->addChild(sprite);
     sprite->setPosition(100,320);
     
-    
+    auto label = cocos2d::Label::createWithTTF("Game is Paused","fonts/arial.ttf", 32);
+    label->setPosition(visibleSize.width/2, visibleSize.height/2);
+    label->setOpacity(0);
+    addChild(label, 5);
     
 //    auto movement = MoveTo::create(10, Vec2(2148,320));
 //    auto resetPosition = MoveTo::create(0, Vec2(-150,320));
@@ -52,23 +59,31 @@ bool Level_1_1::init()
     
     auto listener = cocos2d::EventListenerKeyboard::create();
     
+    
+    //TODO: Fix changing sprite direction
     listener->onKeyPressed = [=](cocos2d::EventKeyboard::KeyCode code, cocos2d::Event * event)->void {
         
         Vec2 loc = event->getCurrentTarget()->getPosition();
-        
+        auto animation = Animation::createWithSpriteFrames(frames, 1.0f/6);
+        auto walk = Animate::create(animation);
         switch(code) {
-                //Escape Key
             case cocos2d::EventKeyboard::KeyCode::KEY_ESCAPE:
                 exit(0);
             case cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
             case cocos2d::EventKeyboard::KeyCode::KEY_D:
-                
-                //sprite->runAction(Animate::create(animation));
-                event->getCurrentTarget()->setPosition(loc.x + 10, loc.y);
+                if (sprite->isFlippedX()) {
+                    sprite->setFlippedX(true);
+                }
+                sprite->runAction(walk);
+                event->getCurrentTarget()->setPosition(loc.x + 20, loc.y);
                 break;
             case cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW:
             case cocos2d::EventKeyboard::KeyCode::KEY_A:
-                event->getCurrentTarget()->setPosition(loc.x - 10, loc.y);
+                if (!sprite->isFlippedX()) {
+                    sprite->setFlippedX(true);
+                }
+                sprite->runAction(walk);
+                event->getCurrentTarget()->setPosition(loc.x - 20, loc.y);
                 break;
             case cocos2d::EventKeyboard::KeyCode::KEY_UP_ARROW:
             case cocos2d::EventKeyboard::KeyCode::KEY_W:
@@ -82,13 +97,21 @@ bool Level_1_1::init()
             case cocos2d::EventKeyboard::KeyCode::KEY_P:
                 if (Director::getInstance()->isPaused()) {
                     Director::getInstance()->resume();
+                    label->setOpacity(0);
                 } else {
                     Director::getInstance()->pause();
+                    label->setOpacity(255);
                 }
                 //TODO: Pause all running nodes here
         }
     };
+    
+    listener->onKeyReleased = [=](EventKeyboard::KeyCode keyCode, Event* event){
+        // remove the key.  std::map.erase() doesn't care if the key doesnt exist
+        keys.erase(keyCode);
+    };
     this->_eventDispatcher->addEventListenerWithSceneGraphPriority(listener,this);
+    this->scheduleUpdate();
     return true;
 }
 
@@ -106,3 +129,32 @@ cocos2d::Vector<SpriteFrame*> Level_1_1::getAnimation(const char *format, int co
     }
     return animFrames;
 }
+
+bool Level_1_1::isKeyPressed(EventKeyboard::KeyCode code) {
+    // Check if the key is currently pressed by seeing it it's in the std::map keys
+    if(keys.find(code) != keys.end())
+        return true;
+    return false;
+}
+
+double Level_1_1::keyPressedDuration(EventKeyboard::KeyCode code) {
+    if(!isKeyPressed(EventKeyboard::KeyCode::KEY_CTRL))
+        return 0;  // Not pressed, so no duration obviously
+    
+    // Return the amount of time that has elapsed between now and when the user
+    // first started holding down the key in milliseconds
+    // Obviously the start time is the value we hold in our std::map keys
+    return std::chrono::duration_cast<std::chrono::milliseconds>
+    (std::chrono::high_resolution_clock::now() - keys[code]).count();
+}
+
+void Level_1_1::update(float delta) {
+    // Register an update function that checks to see if the CTRL key is pressed
+    // and if it is displays how long, otherwise tell the user to press it
+    Node::update(delta);
+}
+// Because cocos2d-x requires createScene to be static, I need to make other non-pointer members static
+std::map<cocos2d::EventKeyboard::KeyCode,
+std::chrono::high_resolution_clock::time_point> Level_1_1::keys;
+
+
