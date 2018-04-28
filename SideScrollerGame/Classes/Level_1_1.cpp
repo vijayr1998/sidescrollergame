@@ -6,6 +6,7 @@
 //
 
 #include "Level_1_1.hpp"
+#include "cocos2d.h"
 
 USING_NS_CC;
 
@@ -30,25 +31,25 @@ bool Level_1_1::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     auto visibleSize = Director::getInstance()->getVisibleSize();
     
-    // background
-    // Will decide to use background if need be.
-//    auto background = Sprite::createWithSpriteFrameName("background.png");
-//    background->setPosition(origin.x + visibleSize.x / 2,origin.y + visibleSize.y/2);
-//    this->addChild(background);
     // background:
-    auto background = TMXTiledMap::create("Users/Vijay/finalproject-vijayr1998/SideScrollerGame/Resources/res/game_map.tmx");
-    //background->setPosition(visibleSize.width/2, visibleSize.height/2);
-    addChild(background, 0); // with a tag of '99'
-    
+    auto background = TMXTiledMap::create("/Users/Vijay/final-project-vijayr1998/SideScrollerGame/Resources/game_map.tmx");
+    //background->setPosition(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2);
+    background->setAnchorPoint(Vec2(0, 0));
+    background->setScale(1.25);
+    auto newNode = cocos2d::Node::create();
+    background->setMapSize(cocos2d::Size(24, 15));
+    this->addChild(newNode);
+    newNode->addChild(background, 1, 99); // with a tag of '99'
+    background->pause();
     auto frames = getAnimation("adventurer_walk%01d.png", 2);
     auto sprite = Sprite::createWithSpriteFrame(frames.front());
     //auto animation = Animation::createWithSpriteFrames(frames, 1.0f/2);
     //sprite->runAction(RepeatForever::create(Animate::create(animation)));
-    this->addChild(sprite);
-    sprite->setPosition(100,320);
+    this->addChild(sprite, 2);
+    sprite->setPosition(100, 260);
     
     auto label = cocos2d::Label::createWithTTF("Game is Paused","fonts/arial.ttf", 32);
-    label->setPosition(visibleSize.width/2, visibleSize.height/2);
+    label->setPosition(840, 525);
     label->setOpacity(0);
     addChild(label, 5);
     

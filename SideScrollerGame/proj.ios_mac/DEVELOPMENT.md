@@ -76,3 +76,6 @@
 2. Trying to fix direction sprite faces when going left or right. 
 3. Have to start loading in floors and platforms. 
 4. The tilemap loader is not finding the tilemap I created. 
+5. Got level to load, but it isn't appearing in game. 
+6. Got tilemap to appear, but it isn't correct size and is anchored to player sprite instead of being still, so the bg moves with the character, which is bad. 
+7. Did a temp fix of size by scaling it 1.25x, but tileset is exact res of screen, so this shouldn't have been a problem. 
