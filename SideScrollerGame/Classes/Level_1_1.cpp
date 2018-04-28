@@ -7,6 +7,7 @@
 
 #include "Level_1_1.hpp"
 #include "cocos2d.h"
+#include <iostream>
 
 USING_NS_CC;
 
@@ -36,11 +37,11 @@ bool Level_1_1::init()
     //background->setPosition(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2);
     background->setAnchorPoint(Vec2(0, 0));
     background->setScale(1.25);
-    auto newNode = cocos2d::Node::create();
     background->setMapSize(cocos2d::Size(24, 15));
-    this->addChild(newNode);
-    newNode->addChild(background, 1, 99); // with a tag of '99'
+    addChild(background, 1); // with a tag of '99'
     background->pause();
+    
+    // Player character spawn:
     auto frames = getAnimation("adventurer_walk%01d.png", 2);
     auto sprite = Sprite::createWithSpriteFrame(frames.front());
     //auto animation = Animation::createWithSpriteFrames(frames, 1.0f/2);
@@ -48,7 +49,8 @@ bool Level_1_1::init()
     this->addChild(sprite, 2);
     sprite->setPosition(100, 260);
     
-    auto label = cocos2d::Label::createWithTTF("Game is Paused","fonts/arial.ttf", 32);
+    // When Paused:
+    auto label = cocos2d::Label::createWithTTF("Game is Paused","fonts/Optima.ttc", 32);
     label->setPosition(840, 525);
     label->setOpacity(0);
     addChild(label, 5);
@@ -58,8 +60,8 @@ bool Level_1_1::init()
 //    auto sequence = Sequence::create(movement, resetPosition, NULL);
 //    sprite->runAction(RepeatForever::create(sequence));
     
-    auto listener = cocos2d::EventListenerKeyboard::create();
     
+    auto listener = cocos2d::EventListenerKeyboard::create();
     
     //TODO: Fix changing sprite direction
     listener->onKeyPressed = [=](cocos2d::EventKeyboard::KeyCode code, cocos2d::Event * event)->void {
@@ -102,8 +104,9 @@ bool Level_1_1::init()
                 } else {
                     Director::getInstance()->pause();
                     label->setOpacity(255);
+                    //Director::getInstance()->pause();
                 }
-                //TODO: Pause all running nodes here
+                
         }
     };
     

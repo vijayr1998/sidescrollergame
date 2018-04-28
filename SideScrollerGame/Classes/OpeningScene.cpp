@@ -29,7 +29,7 @@ bool OpeningScene::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     // Creates Title
-    auto label = Label::createWithTTF("Vijay's Game", "fonts/Avenir Next Condensed.ttc", 72);
+    auto label = Label::createWithTTF("My Game", "fonts/Avenir Next Condensed.ttc", 80);
     label->setOpacity(0);
     if (label == nullptr) {
         return false;
@@ -73,11 +73,11 @@ bool OpeningScene::init()
     
     auto listener = cocos2d::EventListenerKeyboard::create();
     
-    auto name = Label::createWithTTF("Press ENTER to start", "fonts/Optima.ttc", 24);
+    auto name = Label::createWithTTF("Press ENTER to start", "fonts/Copperplate.ttc", 28);
     auto fadeIn = cocos2d::FadeTo::create(3, 255);
     name->setOpacity(0);
     name->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + 2 * visibleSize.height/5 - name->getContentSize().height));
-    name->enableGlow(cocos2d::Color4B::YELLOW);
+    //name->enableGlow(cocos2d::Color4B::YELLOW);
     this->addChild(name, 0);
     name->runAction(fadeIn);
     

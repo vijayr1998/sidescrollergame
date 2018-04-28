@@ -79,3 +79,21 @@
 5. Got level to load, but it isn't appearing in game. 
 6. Got tilemap to appear, but it isn't correct size and is anchored to player sprite instead of being still, so the bg moves with the character, which is bad. 
 7. Did a temp fix of size by scaling it 1.25x, but tileset is exact res of screen, so this shouldn't have been a problem. 
+8. Still have to write in jump and duck, and move on key hold as well as press.
+
+### Apps Used:
+
+1. TexturePack
+2. Tiled
+
+## Update 4/28:
+
+### Issues:
+
+1. Background anchoring.
+2. Key polling. 
+3. Bg sizing. 
+
+### Progress:
+
+1. 

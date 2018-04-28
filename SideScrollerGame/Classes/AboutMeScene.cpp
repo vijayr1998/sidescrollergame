@@ -32,7 +32,7 @@ bool AboutMeScene::init() {
     {
         return false;
     }
-    auto aboutMe = Label::createWithTTF("I'm Vijay, and I built this game for my CS 126 Final Project! \n I don't really know what else to put here!", "fonts/Marker Felt.ttf", 24);
+    auto aboutMe = Label::createWithTTF("I'm Vijay, and I built this game for my CS 126 Final Project! \n I don't really know what else to put here!", "fonts/Copperplate.ttc", 24);
     aboutMe->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y +  2 * visibleSize.height/3 - aboutMe->getContentSize().height));
     aboutMe->enableGlow(Color4B::BLUE);
     this->addChild(aboutMe, 1);
