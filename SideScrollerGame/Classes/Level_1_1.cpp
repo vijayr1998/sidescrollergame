@@ -48,12 +48,27 @@ bool Level_1_1::init()
     //sprite->runAction(RepeatForever::create(Animate::create(animation)));
     this->addChild(sprite, 2);
     sprite->setPosition(100, 260);
+    this->setViewPointCenter(sprite->getPosition());
     
     // When Paused:
     auto label = cocos2d::Label::createWithTTF("Game is Paused","fonts/Optima.ttc", 32);
     label->setPosition(840, 525);
     label->setOpacity(0);
     addChild(label, 5);
+    
+    // Setting up platforms:
+    CCTMXObjectGroup *objectGroup = background->objectGroupNamed("Objects");
+    
+    if(objectGroup == NULL){
+        log("tile map has no objects object layer");
+        return false;
+    }
+    
+    //CCDictionary *spawnPoint = objectGroup->objectNamed("SpawnPoint");
+    
+    //auto *platform3 = objectGroup->objectNamed("Platform3");
+
+
     
 //    auto movement = MoveTo::create(10, Vec2(2148,320));
 //    auto resetPosition = MoveTo::create(0, Vec2(-150,320));
@@ -161,4 +176,19 @@ void Level_1_1::update(float delta) {
 std::map<cocos2d::EventKeyboard::KeyCode,
 std::chrono::high_resolution_clock::time_point> Level_1_1::keys;
 
-
+void Level_1_1::setViewPointCenter(cocos2d::Point position) {
+    
+    //CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    cocos2d::Size winSize = Director::getInstance()->getWinSize();
+    
+    int x = MAX(position.x, winSize.width/2);
+    int y = MAX(position.y, winSize.height/2);
+    x = MIN(x, (background->getMapSize().width * background->getTileSize().width) - winSize.width / 2);
+    y = MIN(y, (background->getMapSize().height * background->getTileSize().height) - winSize.height/2);
+    Point actualPosition = Point(x, y);
+    
+    Point centerOfView = Point(winSize.width/2, winSize.height/2);
+    //Point viewPoint = ccpSub(centerOfView, actualPosition);
+    auto viewPoint = centerOfView - actualPosition;
+    this->setPosition(viewPoint);
+}

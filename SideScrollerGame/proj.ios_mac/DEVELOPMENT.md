@@ -96,4 +96,9 @@
 
 ### Progress:
 
-1. 
+1. None apparently.
+
+## Update 4/30:
+
+1.  Might have to give up on having multiple scenes once we go off the screen. I cannot seem to fix the issue of the background moving with the sprite.
+2. I am going to implement infinite parallax and have an extremely long background. 
