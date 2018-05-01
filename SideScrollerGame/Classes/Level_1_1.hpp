@@ -26,6 +26,10 @@ private:
     static std::map<cocos2d::EventKeyboard::KeyCode,
     std::chrono::high_resolution_clock::time_point> keys;
     cocos2d::TMXTiledMap *background;
+    cocos2d::Sequence *jump;
+    int xMovement;
+    int yMovement;
+    cocos2d::Sprite *sprite;
 };
 
 #endif /* Level_1_1_hpp */

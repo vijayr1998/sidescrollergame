@@ -44,9 +44,13 @@ bool Level_1_1::init()
     
     
     // Player character spawn:
-    auto frames = getAnimation("adventurer_stand%01d.png", 0);
-    frames.pushBack(getAnimation("adventurer_walk%01d.png", 2));
-    auto sprite = Sprite::createWithSpriteFrame(frames.front());
+    auto frames = getAnimation("adventurer_stand.png", 1); //Size 1
+    frames.pushBack(getAnimation("adventurer_walk%01d.png", 2)); //Size 3
+    frames.pushBack(getAnimation("adventurer_jump.png", 1));
+    frames.pushBack(getAnimation("adventurer_duck.png", 1));
+    
+    std::cout << "Size is " << frames.size() << std::endl;
+    Level_1_1::sprite = Sprite::createWithSpriteFrame(frames.front());
     
     //auto animation = Animation::createWithSpriteFrames(frames, 1.0f/2);
     //sprite->runAction(RepeatForever::create(Animate::create(animation)));
@@ -72,23 +76,58 @@ bool Level_1_1::init()
     
     
     //CCDictionary *platform3 = objectGroup->getObject("Platform3");
+    
 
     
 //    auto movement = MoveTo::create(10, Vec2(2148,320));
 //    auto resetPosition = MoveTo::create(0, Vec2(-150,320));
 //    auto sequence = Sequence::create(movement, resetPosition, NULL);
 //    sprite->runAction(RepeatForever::create(sequence));
+    auto bounceAction1 = cocos2d::MoveBy::create(0.5, cocos2d::Vec2(0, 100));
+    auto bounceAction2 = cocos2d::MoveBy::create(0.5, cocos2d::Vec2(0, -100));
+    cocos2d::Vector<cocos2d::FiniteTimeAction*> actions;
+    actions.pushBack(bounceAction1);
+    actions.pushBack(bounceAction2);
     
     
     auto listener = cocos2d::EventListenerKeyboard::create();
-    
     //TODO: Fix changing sprite direction
     listener->onKeyPressed = [=](cocos2d::EventKeyboard::KeyCode code, cocos2d::Event * event)->void {
+        if (sprite->getPositionX() >= visibleSize.width) {
+            Director::getInstance()->replaceScene(Level_1_1::createScene());
+        }
         
         //Vec2 loc = event->getCurrentTarget()->getPosition();
         Vec2 loc = sprite->getPosition();
-        auto animation = Animation::createWithSpriteFrames(frames, 1.0f/6);
+        Vector<SpriteFrame *> standing_vec;
+        standing_vec.pushBack(frames.at(0));
+        auto walk_animation = Animation::createWithSpriteFrames(standing_vec);
+        auto stand = Animate::create(walk_animation);
+        
+        Vector<cocos2d::SpriteFrame *> walk_vec;
+        walk_vec.pushBack(frames.at(1));
+        walk_vec.pushBack(frames.at(2));
+        auto animation = Animation::createWithSpriteFrames(walk_vec, 1.0f/6);
         auto walk = Animate::create(animation);
+        
+        Vector<cocos2d::SpriteFrame *> jump;
+        jump.pushBack(frames.at(0));
+        jump.pushBack(frames.at(3));
+        jump.pushBack(frames.at(0));
+        auto jumpFrames = Animation::createWithSpriteFrames(jump);
+        auto jump_animation = Animate::create(jumpFrames);
+        JumpTo *jumping= new JumpTo();
+        jumping->initWithDuration(1, sprite->getPosition(), 100, 1);
+        
+        
+        Vector<cocos2d::SpriteFrame *> duck;
+        duck.pushBack(frames.at(0));
+        duck.pushBack(frames.at(4));
+        duck.pushBack(frames.at(0));
+        auto duckFrames = Animation::createWithSpriteFrames(duck);
+        auto duck_animation = Animate::create(duckFrames);
+        
+        auto bounce1 = cocos2d::Sequence::create(actions);
         switch(code) {
             case cocos2d::EventKeyboard::KeyCode::KEY_ESCAPE:
                 exit(0);
@@ -99,7 +138,8 @@ bool Level_1_1::init()
                 }
                 sprite->runAction(walk);
                 //event->getCurrentTarget()->setPosition(loc.x + 20, loc.y);
-                sprite->setPosition(loc.x + 20, loc.y);
+                //sprite->setPosition(loc.x + 20, loc.y);
+                xMovement++;
                 break;
             case cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW:
             case cocos2d::EventKeyboard::KeyCode::KEY_A:
@@ -108,16 +148,24 @@ bool Level_1_1::init()
                 }
                 sprite->runAction(walk);
                 //event->getCurrentTarget()->setPosition(loc.x - 20, loc.y);
-                sprite->setPosition(loc.x - 20, loc.y);
+                //sprite->setPosition(loc.x - 20, loc.y);
+                xMovement--;
                 break;
             case cocos2d::EventKeyboard::KeyCode::KEY_UP_ARROW:
             case cocos2d::EventKeyboard::KeyCode::KEY_W:
             case cocos2d::EventKeyboard::KeyCode::KEY_SPACE:
-                // Implement physics for jump.
+                
+                sprite->runAction(jump_animation);
+                //sprite->runAction(bounce1);
+                //sprite->setPosition(loc.x, loc.y + 50);
+                //sprite->setPosition(loc.x, loc.y - 30);
+                //yMovement++;
+                sprite->runAction(jumping);
                 break;
             case cocos2d::EventKeyboard::KeyCode::KEY_DOWN_ARROW:
             case cocos2d::EventKeyboard::KeyCode::KEY_S:
-                //Duck
+                
+                sprite->runAction(duck_animation);
                 break;
             case cocos2d::EventKeyboard::KeyCode::KEY_P:
                 if (Director::getInstance()->isPaused()) {
@@ -128,14 +176,83 @@ bool Level_1_1::init()
                     label->setOpacity(255);
                     //Director::getInstance()->pause();
                 }
+            default:
+                sprite->runAction(stand);
                 
         }
     };
     
-    listener->onKeyReleased = [=](EventKeyboard::KeyCode keyCode, Event* event){
-        // remove the key.  std::map.erase() doesn't care if the key doesnt exist
-        keys.erase(keyCode);
+    listener->onKeyReleased = [=](EventKeyboard::KeyCode code, Event* event)->void {
+        
+        if (sprite->getPositionX() >= visibleSize.width) {
+            Director::getInstance()->replaceScene(Level_1_1::createScene());
+        }
+            //Vec2 loc = event->getCurrentTarget()->getPosition();
+            Vec2 loc = sprite->getPosition();
+            Vector<SpriteFrame *> standing_vec;
+            standing_vec.pushBack(frames.at(0));
+            auto walk_animation = Animation::createWithSpriteFrames(standing_vec);
+            auto stand = Animate::create(walk_animation);
+            
+            Vector<cocos2d::SpriteFrame *> walk_vec;
+            walk_vec.pushBack(frames.at(1));
+            walk_vec.pushBack(frames.at(2));
+            walk_vec.pushBack(frames.at(1));
+            walk_vec.pushBack(frames.at(2));
+            auto animation = Animation::createWithSpriteFrames(walk_vec, 1.0f/6);
+            auto walk = Animate::create(animation);
+            
+            Vector<cocos2d::SpriteFrame *> duck;
+            duck.pushBack(frames.at(0));
+            duck.pushBack(frames.at(4));
+            duck.pushBack(frames.at(0));
+            auto duckFrames = Animation::createWithSpriteFrames(duck);
+            auto duck_animation = Animate::create(duckFrames);
+            
+            //auto bounce1 = cocos2d::Sequence::create(actions);
+            switch(code) {
+                case cocos2d::EventKeyboard::KeyCode::KEY_ESCAPE:
+                    exit(0);
+                case cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
+                case cocos2d::EventKeyboard::KeyCode::KEY_D:
+                    if (sprite->isFlippedX()) {
+                        sprite->setFlippedX(true);
+                    }
+                    sprite->runAction(walk);
+                    //event->getCurrentTarget()->setPosition(loc.x + 20, loc.y);
+                    //sprite->setPosition(loc.x - 20, loc.y);
+                    xMovement--;
+                    break;
+                case cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW:
+                case cocos2d::EventKeyboard::KeyCode::KEY_A:
+                    if (!sprite->isFlippedX()) {
+                        sprite->setFlippedX(true);
+                    }
+                    sprite->runAction(walk);
+                    //event->getCurrentTarget()->setPosition(loc.x - 20, loc.y);
+                    //sprite->setPosition(loc.x + 20, loc.y);
+                    xMovement++;
+                    break;
+                case cocos2d::EventKeyboard::KeyCode::KEY_UP_ARROW:
+                case cocos2d::EventKeyboard::KeyCode::KEY_W:
+                case cocos2d::EventKeyboard::KeyCode::KEY_SPACE:
+                    
+//                        sprite->runAction(jump_animation);
+                        //sprite->setPosition(loc.x, loc.y - 50);
+                        //sprite->setPosition(loc.x, loc.y + 30);
+                    //yMovement--;
+                    break;
+                case cocos2d::EventKeyboard::KeyCode::KEY_DOWN_ARROW:
+                case cocos2d::EventKeyboard::KeyCode::KEY_S:
+                    
+                    sprite->runAction(duck_animation->reverse());
+                    break;
+                default:
+                    sprite->runAction(stand);
+            }
     };
+    
+    
     this->_eventDispatcher->addEventListenerWithSceneGraphPriority(listener,this);
     this->scheduleUpdate();
     return true;
@@ -156,28 +273,14 @@ cocos2d::Vector<SpriteFrame*> Level_1_1::getAnimation(const char *format, int co
     return animFrames;
 }
 
-bool Level_1_1::isKeyPressed(EventKeyboard::KeyCode code) {
-    // Check if the key is currently pressed by seeing it it's in the std::map keys
-    if(keys.find(code) != keys.end())
-        return true;
-    return false;
-}
-
-double Level_1_1::keyPressedDuration(EventKeyboard::KeyCode code) {
-    if(!isKeyPressed(EventKeyboard::KeyCode::KEY_CTRL))
-        return 0;  // Not pressed, so no duration obviously
-    
-    // Return the amount of time that has elapsed between now and when the user
-    // first started holding down the key in milliseconds
-    // Obviously the start time is the value we hold in our std::map keys
-    return std::chrono::duration_cast<std::chrono::milliseconds>
-    (std::chrono::high_resolution_clock::now() - keys[code]).count();
-}
-
 void Level_1_1::update(float delta) {
     // Register an update function that checks to see if the CTRL key is pressed
     // and if it is displays how long, otherwise tell the user to press it
     Node::update(delta);
+    float newPosX = sprite->getPositionX() + (xMovement * 20.f);
+    float newPosY = sprite->getPositionY();// + (yMovement * 10.f);
+    sprite->setPosition(newPosX, newPosY);
+    
 }
 // Because cocos2d-x requires createScene to be static, I need to make other non-pointer members static
 std::map<cocos2d::EventKeyboard::KeyCode,
