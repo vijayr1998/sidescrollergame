@@ -11,7 +11,7 @@
 #pragma once
 #include <stdio.h>
 
-class KeyboardScene : public cocos2d::Layer
+class KeyboardScene : public cocos2d::Scene
 {
 public:
     static cocos2d::Scene *createScene();

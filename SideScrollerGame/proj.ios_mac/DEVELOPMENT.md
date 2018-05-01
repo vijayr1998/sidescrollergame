@@ -102,3 +102,5 @@
 
 1.  Might have to give up on having multiple scenes once we go off the screen. I cannot seem to fix the issue of the background moving with the sprite.
 2. I am going to implement infinite parallax and have an extremely long background. 
+3. Screw infinite,  i think i understand why it isn't working. Both the sprite and background are on the same layer, so they move together. I will create separate classes for them and try that out. 
+4. I think I fixed my problem, not sure how many things I just broke

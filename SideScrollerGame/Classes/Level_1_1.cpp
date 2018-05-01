@@ -8,6 +8,7 @@
 #include "Level_1_1.hpp"
 #include "cocos2d.h"
 #include <iostream>
+#include "BackgroundLayer.hpp"
 
 USING_NS_CC;
 
@@ -33,22 +34,27 @@ bool Level_1_1::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     
     // background:
-    auto background = TMXTiledMap::create("/Users/Vijay/final-project-vijayr1998/SideScrollerGame/Resources/game_map.tmx");
-    //background->setPosition(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2);
-    background->setAnchorPoint(Vec2(0, 0));
-    background->setScale(1.25);
-    background->setMapSize(cocos2d::Size(24, 15));
-    addChild(background, 1); // with a tag of '99'
-    background->pause();
+//    auto background = TMXTiledMap::create("/Users/Vijay/final-project-vijayr1998/SideScrollerGame/Resources/game_map.tmx");
+//    //background->setPosition(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2);
+//    //background->setAnchorPoint(Vec2(0, 0));
+//    background->setScale(1.25);
+//    background->setMapSize(cocos2d::Size(24, 15));
+//    addChild(background, 1, 99); // with a tag of '99'
+    addChild(BackgroundLayer::scene(), 1);
+    
     
     // Player character spawn:
-    auto frames = getAnimation("adventurer_walk%01d.png", 2);
+    auto frames = getAnimation("adventurer_stand%01d.png", 0);
+    frames.pushBack(getAnimation("adventurer_walk%01d.png", 2));
     auto sprite = Sprite::createWithSpriteFrame(frames.front());
+    
     //auto animation = Animation::createWithSpriteFrames(frames, 1.0f/2);
     //sprite->runAction(RepeatForever::create(Animate::create(animation)));
     this->addChild(sprite, 2);
     sprite->setPosition(100, 260);
-    this->setViewPointCenter(sprite->getPosition());
+    
+    
+    
     
     // When Paused:
     auto label = cocos2d::Label::createWithTTF("Game is Paused","fonts/Optima.ttc", 32);
@@ -57,17 +63,15 @@ bool Level_1_1::init()
     addChild(label, 5);
     
     // Setting up platforms:
-    CCTMXObjectGroup *objectGroup = background->objectGroupNamed("Objects");
+//    CCTMXObjectGroup *objectGroup = background->objectGroupNamed("Platforms");
+//
+//    if(objectGroup == NULL){
+//        log("tile map has no objects object layer");
+//        return false;
+//    }
     
-    if(objectGroup == NULL){
-        log("tile map has no objects object layer");
-        return false;
-    }
     
-    //CCDictionary *spawnPoint = objectGroup->objectNamed("SpawnPoint");
-    
-    //auto *platform3 = objectGroup->objectNamed("Platform3");
-
+    //CCDictionary *platform3 = objectGroup->getObject("Platform3");
 
     
 //    auto movement = MoveTo::create(10, Vec2(2148,320));
@@ -81,7 +85,8 @@ bool Level_1_1::init()
     //TODO: Fix changing sprite direction
     listener->onKeyPressed = [=](cocos2d::EventKeyboard::KeyCode code, cocos2d::Event * event)->void {
         
-        Vec2 loc = event->getCurrentTarget()->getPosition();
+        //Vec2 loc = event->getCurrentTarget()->getPosition();
+        Vec2 loc = sprite->getPosition();
         auto animation = Animation::createWithSpriteFrames(frames, 1.0f/6);
         auto walk = Animate::create(animation);
         switch(code) {
@@ -93,7 +98,8 @@ bool Level_1_1::init()
                     sprite->setFlippedX(true);
                 }
                 sprite->runAction(walk);
-                event->getCurrentTarget()->setPosition(loc.x + 20, loc.y);
+                //event->getCurrentTarget()->setPosition(loc.x + 20, loc.y);
+                sprite->setPosition(loc.x + 20, loc.y);
                 break;
             case cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW:
             case cocos2d::EventKeyboard::KeyCode::KEY_A:
@@ -101,7 +107,8 @@ bool Level_1_1::init()
                     sprite->setFlippedX(true);
                 }
                 sprite->runAction(walk);
-                event->getCurrentTarget()->setPosition(loc.x - 20, loc.y);
+                //event->getCurrentTarget()->setPosition(loc.x - 20, loc.y);
+                sprite->setPosition(loc.x - 20, loc.y);
                 break;
             case cocos2d::EventKeyboard::KeyCode::KEY_UP_ARROW:
             case cocos2d::EventKeyboard::KeyCode::KEY_W:
@@ -176,19 +183,3 @@ void Level_1_1::update(float delta) {
 std::map<cocos2d::EventKeyboard::KeyCode,
 std::chrono::high_resolution_clock::time_point> Level_1_1::keys;
 
-void Level_1_1::setViewPointCenter(cocos2d::Point position) {
-    
-    //CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    cocos2d::Size winSize = Director::getInstance()->getWinSize();
-    
-    int x = MAX(position.x, winSize.width/2);
-    int y = MAX(position.y, winSize.height/2);
-    x = MIN(x, (background->getMapSize().width * background->getTileSize().width) - winSize.width / 2);
-    y = MIN(y, (background->getMapSize().height * background->getTileSize().height) - winSize.height/2);
-    Point actualPosition = Point(x, y);
-    
-    Point centerOfView = Point(winSize.width/2, winSize.height/2);
-    //Point viewPoint = ccpSub(centerOfView, actualPosition);
-    auto viewPoint = centerOfView - actualPosition;
-    this->setPosition(viewPoint);
-}

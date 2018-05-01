@@ -61,6 +61,8 @@
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
+		B1030B6E20972289006C4ECD /* BackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1030B6C20972289006C4ECD /* BackgroundLayer.cpp */; };
+		B1030B6F20972289006C4ECD /* BackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1030B6C20972289006C4ECD /* BackgroundLayer.cpp */; };
 		B110C81B208D96CC00993379 /* OpeningScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B110C819208D96CC00993379 /* OpeningScene.cpp */; };
 		B110C81C208D96CC00993379 /* OpeningScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B110C819208D96CC00993379 /* OpeningScene.cpp */; };
 		B110C81F208D9CE900993379 /* Oshawott.png in Resources */ = {isa = PBXBuildFile; fileRef = B110C81E208D9CE800993379 /* Oshawott.png */; };
@@ -205,6 +207,8 @@
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B1030B6C20972289006C4ECD /* BackgroundLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BackgroundLayer.cpp; sourceTree = "<group>"; };
+		B1030B6D20972289006C4ECD /* BackgroundLayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BackgroundLayer.hpp; sourceTree = "<group>"; };
 		B110C819208D96CC00993379 /* OpeningScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpeningScene.cpp; sourceTree = "<group>"; };
 		B110C81A208D96CC00993379 /* OpeningScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpeningScene.hpp; sourceTree = "<group>"; };
 		B110C81E208D9CE800993379 /* Oshawott.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Oshawott.png; sourceTree = "<group>"; };
@@ -421,6 +425,8 @@
 				B176FAAD2091661F00626B2E /* AboutMeScene.hpp */,
 				B1D61CFA2092A86800B22B83 /* Level_1_1.cpp */,
 				B1D61CFB2092A86800B22B83 /* Level_1_1.hpp */,
+				B1030B6C20972289006C4ECD /* BackgroundLayer.cpp */,
+				B1030B6D20972289006C4ECD /* BackgroundLayer.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -644,6 +650,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1C7E906208AD0F80026A363 /* ActionsScene.cpp in Sources */,
+				B1030B6E20972289006C4ECD /* BackgroundLayer.cpp in Sources */,
 				B167389E2090223C00A5FCA4 /* MenuScene.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				B1C7E8FA208AD0D20026A363 /* TouchScene.cpp in Sources */,
@@ -668,6 +675,7 @@
 				B1C7E907208AD0F80026A363 /* ActionsScene.cpp in Sources */,
 				B110C81C208D96CC00993379 /* OpeningScene.cpp in Sources */,
 				B1C7E903208AD0EA0026A363 /* KeyboardScene.cpp in Sources */,
+				B1030B6F20972289006C4ECD /* BackgroundLayer.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				B1C7E8FB208AD0D20026A363 /* TouchScene.cpp in Sources */,
 				B167389F2090223C00A5FCA4 /* MenuScene.cpp in Sources */,

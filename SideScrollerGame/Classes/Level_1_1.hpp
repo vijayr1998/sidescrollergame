@@ -19,7 +19,6 @@ public:
     CREATE_FUNC(Level_1_1);
     bool isKeyPressed(cocos2d::EventKeyboard::KeyCode);
     double keyPressedDuration(cocos2d::EventKeyboard::KeyCode);
-    void setViewPointCenter(cocos2d::Point position);
     virtual void update(float delta) override;
     
 private:
@@ -28,4 +27,5 @@ private:
     std::chrono::high_resolution_clock::time_point> keys;
     cocos2d::TMXTiledMap *background;
 };
+
 #endif /* Level_1_1_hpp */

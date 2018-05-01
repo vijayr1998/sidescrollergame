@@ -20,7 +20,7 @@ Scene* KeyboardScene::createScene()
 
 bool KeyboardScene::init()
 {
-    if ( !Layer::init() )
+    if ( !Scene::init() )
     {
         return false;
     }

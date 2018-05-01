@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "OpeningScene.hpp"
 #include "MenuScene.hpp"
+#include "KeyboardScene.hpp"
 
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
@@ -115,6 +116,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     //Starts game
     auto beginGame = OpeningScene::createScene();
+    //auto beginGame = KeyboardScene::createScene();
     
     // run
     director->runWithScene(beginGame);
