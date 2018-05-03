@@ -12,6 +12,12 @@
 6. https://www.makeschool.com/docs/#!/cocos2d/1.4/tilemaps/cctiledmap-limitations
 7. https://www.raywenderlich.com/39113/cocos2d-x-tile-map-tutorial-part-1
 
+## Apps Used:
+
+1. Xcode
+2. Texture Packer
+3. Tiled
+
 ## HOW TO PLAY
 
 1. Click Space on the Opening Screen to have the sprites move for fun.
