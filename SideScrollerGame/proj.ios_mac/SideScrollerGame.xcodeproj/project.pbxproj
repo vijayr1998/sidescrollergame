@@ -69,6 +69,8 @@
 		B110C820208D9CE900993379 /* Oshawott.png in Resources */ = {isa = PBXBuildFile; fileRef = B110C81E208D9CE800993379 /* Oshawott.png */; };
 		B110C822208D9D4500993379 /* sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = B110C821208D9D4400993379 /* sprite.png */; };
 		B110C823208D9D4500993379 /* sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = B110C821208D9D4400993379 /* sprite.png */; };
+		B116CA05209A6FC8001771EE /* HUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B116CA03209A6FC8001771EE /* HUDLayer.cpp */; };
+		B116CA06209A6FC8001771EE /* HUDLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B116CA03209A6FC8001771EE /* HUDLayer.cpp */; };
 		B11863CC209444C600B8323E /* game_map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = B11863CB209444C500B8323E /* game_map.tmx */; };
 		B1673897209019B800A5FCA4 /* stars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1673895209019B800A5FCA4 /* stars.jpg */; };
 		B1673898209019B800A5FCA4 /* stars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1673895209019B800A5FCA4 /* stars.jpg */; };
@@ -204,6 +206,8 @@
 		B110C81A208D96CC00993379 /* OpeningScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OpeningScene.hpp; sourceTree = "<group>"; };
 		B110C81E208D9CE800993379 /* Oshawott.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Oshawott.png; sourceTree = "<group>"; };
 		B110C821208D9D4400993379 /* sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite.png; sourceTree = "<group>"; };
+		B116CA03209A6FC8001771EE /* HUDLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HUDLayer.cpp; sourceTree = "<group>"; };
+		B116CA04209A6FC8001771EE /* HUDLayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HUDLayer.hpp; sourceTree = "<group>"; };
 		B11863CB209444C500B8323E /* game_map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = game_map.tmx; sourceTree = "<group>"; };
 		B1673895209019B800A5FCA4 /* stars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stars.jpg; sourceTree = "<group>"; };
 		B167389920901B4700A5FCA4 /* stars2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars2.png; sourceTree = "<group>"; };
@@ -408,6 +412,8 @@
 				B1D61CFB2092A86800B22B83 /* Level_1_1.hpp */,
 				B1030B6C20972289006C4ECD /* BackgroundLayer.cpp */,
 				B1030B6D20972289006C4ECD /* BackgroundLayer.hpp */,
+				B116CA03209A6FC8001771EE /* HUDLayer.cpp */,
+				B116CA04209A6FC8001771EE /* HUDLayer.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -626,6 +632,7 @@
 				B167389E2090223C00A5FCA4 /* MenuScene.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				B1C7E8FA208AD0D20026A363 /* TouchScene.cpp in Sources */,
+				B116CA05209A6FC8001771EE /* HUDLayer.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -646,6 +653,7 @@
 			files = (
 				B1C7E907208AD0F80026A363 /* ActionsScene.cpp in Sources */,
 				B110C81C208D96CC00993379 /* OpeningScene.cpp in Sources */,
+				B116CA06209A6FC8001771EE /* HUDLayer.cpp in Sources */,
 				B1C7E903208AD0EA0026A363 /* KeyboardScene.cpp in Sources */,
 				B1030B6F20972289006C4ECD /* BackgroundLayer.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,

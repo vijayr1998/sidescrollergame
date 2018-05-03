@@ -103,4 +103,34 @@
 1.  Might have to give up on having multiple scenes once we go off the screen. I cannot seem to fix the issue of the background moving with the sprite.
 2. I am going to implement infinite parallax and have an extremely long background. 
 3. Screw infinite,  i think i understand why it isn't working. Both the sprite and background are on the same layer, so they move together. I will create separate classes for them and try that out. 
-4. I think I fixed my problem, not sure how many things I just broke
+4. I think I fixed my problem, not sure how many things I just broke.
+    a. What I did was I moved the background creation to a new Layer class, and just added that class as a child to the "main" one. It worked. This also means that I can just use one class to create all my backgrounds and have one Scene class. 
+
+## Update 5/1:
+
+Note: I got sick, so progress has been slow. 
+
+### Progress:
+
+1. Fixed key holding issue.
+2. Implemented jump without physics engine.
+
+### To-dos:
+
+1.  Make sure scenes are randomly chosen for new screens.
+2. Implement object areas, so that sprite can stand on platforms, collect coins, etc.
+3. Have a finishing level . 
+4. Make a HUD to keep track of time spent playing and coins collected, score etc.
+5. Fix sprite direction. 
+
+### Issues:
+
+1. Game is taking up a lot of system resources, and I don't know why. I do not have the time to make the game more efficient before Friday.
+2. Will not have time for enemies. 
+3. Do not have time to implement losing, such as touching an enemy, or falling into a hole. 
+
+## Update 5/2: Still sick.
+
+1. Coin collection is not working so can't implement that . It's not recognizing the tiles that contain the coins. 
+2. I cannot make the platforms work either; the code to recognize those tiles as objects have since been deprecated, and I haven't the energy since getting sick to look more in depth. 
+3. What I can do now is have some score counter and make more levels just so the game plays longer. 

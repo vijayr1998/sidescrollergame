@@ -10,6 +10,8 @@
 
 #include <stdio.h>
 #include "cocos2d.h"
+#include "HUDLayer.hpp"
+#include "BackgroundLayer.hpp"
 
 class Level_1_1 : public cocos2d::Layer
 {
@@ -20,6 +22,8 @@ public:
     bool isKeyPressed(cocos2d::EventKeyboard::KeyCode);
     double keyPressedDuration(cocos2d::EventKeyboard::KeyCode);
     virtual void update(float delta) override;
+    void setPlayerPosition(cocos2d::Point position);
+    cocos2d::Point tileCoord(cocos2d::Point pt);
     
 private:
     cocos2d::Vector<cocos2d::SpriteFrame*> getAnimation(const char *format, int count);
@@ -30,6 +34,10 @@ private:
     int xMovement;
     int yMovement;
     cocos2d::Sprite *sprite;
+    HUDLayer *_hud;
+    int _numCollected;
+    cocos2d::TMXLayer *_coin_layer1;
+    cocos2d::TMXLayer *_coin_layer2;
 };
 
 #endif /* Level_1_1_hpp */

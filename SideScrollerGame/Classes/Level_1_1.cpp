@@ -17,6 +17,10 @@ Scene* Level_1_1::createScene()
     auto scene = Scene::create();
     auto layer = Level_1_1::create();
     scene->addChild(layer);
+    HUDLayer *hud = new HUDLayer();
+    hud->init();
+    scene->addChild(hud);
+    layer->_hud = hud;
     return scene;
 }
 
@@ -42,18 +46,14 @@ bool Level_1_1::init()
 //    addChild(background, 1, 99); // with a tag of '99'
     addChild(BackgroundLayer::scene(), 1);
     
-    
     // Player character spawn:
     auto frames = getAnimation("adventurer_stand.png", 1); //Size 1
     frames.pushBack(getAnimation("adventurer_walk%01d.png", 2)); //Size 3
     frames.pushBack(getAnimation("adventurer_jump.png", 1));
     frames.pushBack(getAnimation("adventurer_duck.png", 1));
     
-    std::cout << "Size is " << frames.size() << std::endl;
     Level_1_1::sprite = Sprite::createWithSpriteFrame(frames.front());
     
-    //auto animation = Animation::createWithSpriteFrames(frames, 1.0f/2);
-    //sprite->runAction(RepeatForever::create(Animate::create(animation)));
     this->addChild(sprite, 2);
     sprite->setPosition(100, 260);
     
@@ -96,7 +96,17 @@ bool Level_1_1::init()
         if (sprite->getPositionX() >= visibleSize.width) {
             Director::getInstance()->replaceScene(Level_1_1::createScene());
         }
-        
+        if (sprite->getPositionX() == 420) {
+            _numCollected++;
+            _hud->numCollectedChanged(_numCollected);
+        }
+        if (sprite->getPositionX() == 1120) {
+            _numCollected++;
+            _hud->numCollectedChanged(_numCollected);
+        }
+        if (sprite->getPositionX() == origin.x) {
+            sprite->setPositionX(1);
+        }
         //Vec2 loc = event->getCurrentTarget()->getPosition();
         Vec2 loc = sprite->getPosition();
         Vector<SpriteFrame *> standing_vec;
@@ -116,9 +126,9 @@ bool Level_1_1::init()
         jump.pushBack(frames.at(0));
         auto jumpFrames = Animation::createWithSpriteFrames(jump);
         auto jump_animation = Animate::create(jumpFrames);
+        //https://stackoverflow.com/questions/23488307/how-to-make-a-sprite-jump-using-ccjumpto-in-cocos2d-x
         JumpTo *jumping= new JumpTo();
-        jumping->initWithDuration(1, sprite->getPosition(), 100, 1);
-        
+        jumping->initWithDuration(1, sprite->getPosition(), 300, 1);
         
         Vector<cocos2d::SpriteFrame *> duck;
         duck.pushBack(frames.at(0));
@@ -127,7 +137,6 @@ bool Level_1_1::init()
         auto duckFrames = Animation::createWithSpriteFrames(duck);
         auto duck_animation = Animate::create(duckFrames);
         
-        auto bounce1 = cocos2d::Sequence::create(actions);
         switch(code) {
             case cocos2d::EventKeyboard::KeyCode::KEY_ESCAPE:
                 exit(0);
@@ -286,3 +295,30 @@ void Level_1_1::update(float delta) {
 std::map<cocos2d::EventKeyboard::KeyCode,
 std::chrono::high_resolution_clock::time_point> Level_1_1::keys;
 
+//void Level_1_1::setPlayerPosition(Point position)
+//{
+//    Point tileCoord = this->tileCoord(position);
+//    int tileGid = BackgroundLayer::meta->getTileGIDAt(tileCoord);
+//    if (tileGid) {
+//        //auto properties = background->propertiesForGID(tileGid);
+//        //cocos2d::ValueMap *properties = background->getPropertiesForGID(tileGid);
+//        auto kek = background->getPropertiesForGID(tileGid);
+//        Value *lel = &kek;
+//        if (lel) {
+//             auto *collision = lel->valueForKey("Collidable");
+//            auto col = lel->asValueMap();
+//            string omg = col.find("Collidable");
+//            if (collision && (collision->compare("True") == 0)) {
+//                return;
+//            }
+//        }
+//    }
+//    sprite->setPosition(position);
+//}
+
+Point Level_1_1::tileCoord(Point position)
+{
+    int x = position.x / background->getTileSize().width;
+    int y = ((background->getMapSize().height * background->getTileSize().height) - position.y) / background->getTileSize().height;
+    return ccp(x, y);
+}

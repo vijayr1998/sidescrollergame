@@ -16,9 +16,22 @@ bool BackgroundLayer::init()
         CC_BREAK_IF(! Layer::init());
         
         Size winSize = Director::getInstance()->getWinSize();
-        
+        std::string file_path;
+        std::vector<std::string> filePaths;
+        filePaths.push_back("/Users/Vijay/final-project-vijayr1998/SideScrollerGame/Resources/game_map.tmx");
+        filePaths.push_back("/Users/Vijay/final-project-vijayr1998/SideScrollerGame/Resources/game_map_2.tmx");
+        filePaths.push_back("/Users/Vijay/final-project-vijayr1998/SideScrollerGame/Resources/game_map_3.tmx");
+        filePaths.push_back("/Users/Vijay/final-project-vijayr1998/SideScrollerGame/Resources/game_map_4.tmx");
+        filePaths.push_back("/Users/Vijay/final-project-vijayr1998/SideScrollerGame/Resources/game_map_5.tmx");
+        filePaths.push_back("/Users/Vijay/final-project-vijayr1998/SideScrollerGame/Resources/game_map_6.tmx");
+        filePaths.push_back("/Users/Vijay/final-project-vijayr1998/SideScrollerGame/Resources/game_map_7.tmx");
+        filePaths.push_back("/Users/Vijay/final-project-vijayr1998/SideScrollerGame/Resources/game_map_8.tmx");
+        file_path = filePaths.at(random(0, 7));
         // background:
-        auto background = TMXTiledMap::create("/Users/Vijay/final-project-vijayr1998/SideScrollerGame/Resources/game_map.tmx");
+        //auto background = TMXTiledMap::create(file_path);
+        auto background = TMXTiledMap::create(file_path);
+//        meta = background->getLayer("Meta");
+//        meta->setVisible(false);
         //background->setPosition(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2);
         //background->setAnchorPoint(Vec2(0, 0));
         background->setScale(1.25);
@@ -49,3 +62,11 @@ Scene* BackgroundLayer::scene()
     // return the Main menu scene
     return scene;
 }
+
+Point BackgroundLayer::tileCoord(Point position)
+{
+    int x = position.x / background->getTileSize().width;
+    int y = ((background->getMapSize().height * background->getTileSize().height) - position.y) / background->getTileSize().height;
+    return ccp(x, y);
+}
+
