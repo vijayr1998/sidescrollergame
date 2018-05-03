@@ -1,7 +1,5 @@
 # CS 126 FinalProject
 
-# Acknowledgments:
-
 ## Thanks to the following websites and links for their tutorials and help:
 
 1. http://www.cocos2d-x.org/docs/cocos2d-x/en/
